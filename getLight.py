@@ -22,6 +22,26 @@ w = (255,255,255)
 
 k = (0,0,0)
 
+stop= [
+
+    r,w,w,w,w,w,w,r,
+
+    w,r,w,w,w,w,r,w,
+
+    w,w,r,w,w,r,w,w,
+
+    w,w,w,r,r,w,w,w,
+
+    w,w,w,r,r,w,w,w,
+
+    w,w,r,w,w,r,w,w,
+
+    w,r,w,w,w,w,r,w,
+
+    r,w,w,w,w,w,w,r,
+
+    ]
+
 one = [
 
     b,b,b,b,b,b,b,b,
@@ -137,7 +157,7 @@ while(counter<25):
    
         if(int(senaste)<1000):
             #sense.show_message(str(senaste)+"a")
-            sense.set_pixels(one)
+            sense.set_pixels(stop)
         elif(int(senaste)<5000):
             #sense.show_message(str(senaste)+"b")
             sense.set_pixels(two)
@@ -149,7 +169,7 @@ while(counter<25):
             #sense.show_message(str(senaste)+"d")
 
 
-        time.sleep(5)
+        time.sleep(2)
         counter +=1
     
     except ValueError:
