@@ -122,7 +122,7 @@ five = [
     ]
 
 #Connect to the database/collection
-uri="mongodb+srv://larsson830:2Od7PYik1ClEN1DO@cluster0.acgjcjc.mongodb.net"
+uri="mongodb+srv://username:password@cluster0.acgjcjc.mongodb.net"
 client = MongoClient(uri)
 db = client.frejs
 coll = db.sensor_data
