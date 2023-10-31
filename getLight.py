@@ -141,6 +141,23 @@ five = [
 
     ]
 
+sense.set_pixels(stop)
+
+time.sleep(0.5)
+sense.set_pixels(one)
+
+time.sleep(0.5)
+sense.set_pixels(two)
+
+time.sleep(0.5)
+sense.set_pixels(three)
+
+time.sleep(0.5)
+sense.set_pixels(four)
+
+time.sleep(0.5)
+
+sense.show_message("Start")
 #Connect to the database/collection
 uri="mongodb+srv://username:password@cluster0.acgjcjc.mongodb.net"
 client = MongoClient(uri)
@@ -148,7 +165,7 @@ db = client.frejs
 coll = db.sensor_data
 counter = 0
 
-while(counter<25):
+while(True):
     try:
         ljus = coll.find().sort("_id",-1).limit(1)
         for x in ljus:
@@ -160,18 +177,28 @@ while(counter<25):
             sense.set_pixels(stop)
         elif(int(senaste)<5000):
             #sense.show_message(str(senaste)+"b")
-            sense.set_pixels(two)
+            sense.set_pixels(one)
         elif(int(senaste)<15000):
-            sense.set_pixels(three)
+            sense.set_pixels(two)
             #sense.show_message(str(senaste)+"c")
         elif(int(senaste)<25000):
+            sense.set_pixels(three)
+            #sense.show_message(str(ssenaste)+"d")
+        else:
             sense.set_pixels(four)
-            #sense.show_message(str(senaste)+"d")
-
-
-        time.sleep(2)
+        #sense.set_pixels(stop)
+        time.sleep(3)
         counter +=1
-    
+        sense.clear()
+        
     except ValueError:
         print("OH NO, Wrong value")
+        sense.clear()
         client.close()
+    except KeyboardInterrupt:
+        sense.clear()
+        print("exiting")
+        try:
+            sys.exit(130)
+        except SystemExit:
+            os._exit(130)
